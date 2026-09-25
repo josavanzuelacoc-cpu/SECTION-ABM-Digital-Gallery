@@ -111,11 +111,12 @@ function closeGallery() {
   document.body.style.overflow = "";
 }
 
-/* ---------- video gallery (local MP4 only) ---------- */
+/* ---------- video gallery (mixed: local MP4 + YouTube) ---------- */
 function setupVideos() {
   const video  = $("#featuredVideo");
+  const iframe = $("#featuredIframe");
   const thumbs = [...$$("#videoThumbs .video-thumb")];
-  if (!video || !thumbs.length) return;
+  if (!video || !iframe || !thumbs.length) return;
 
   const countEl = $("#videoCount");
   const titleEl = $("#videoTitle");
@@ -125,16 +126,35 @@ function setupVideos() {
 
   function show(i, autoplay) {
     current = (i + total) % total;
-    const t = thumbs[current];
+    const t    = thumbs[current];
+    const type = t.dataset.type || "local";
 
+    // Reset both players
     try { video.pause(); } catch (_) {}
-    video.src = t.dataset.src || "";
-    if (t.dataset.poster) video.poster = t.dataset.poster;
-    video.load();
+    video.classList.add("is-hidden");
+    iframe.classList.add("is-hidden");
+    video.removeAttribute("src");
+    video.removeAttribute("poster");
+    iframe.src = "about:blank";
 
-    if (autoplay) {
-      const p = video.play();
-      if (p && typeof p.catch === "function") p.catch(() => {});
+    if (type === "youtube") {
+      const id = t.dataset.id;
+      if (!id) return;
+      // Privacy-friendly embed (works better with ad blockers)
+      const origin = encodeURIComponent(location.origin);
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}` +
+                   `?rel=0&playsinline=1&modestbranding=1&origin=${origin}` +
+                   (autoplay ? "&autoplay=1" : "");
+      iframe.classList.remove("is-hidden");
+    } else {
+      video.src = t.dataset.src || "";
+      if (t.dataset.poster) video.poster = t.dataset.poster;
+      video.load();
+      video.classList.remove("is-hidden");
+      if (autoplay) {
+        const p = video.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
     }
 
     countEl.textContent =
@@ -153,7 +173,8 @@ function setupVideos() {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
     if (e.target.matches("input, textarea")) return;
 
-    const rect = video.getBoundingClientRect();
+    const activeEl = iframe.classList.contains("is-hidden") ? video : iframe;
+    const rect = activeEl.getBoundingClientRect();
     const onScreen = rect.top < innerHeight * 0.85 && rect.bottom > innerHeight * 0.15;
     if (!onScreen) return;
 
