@@ -133,22 +133,27 @@
   </div>
 
   <div class="gallery-toolbar reveal">
-    <span><b>6</b> clips</span>
+    <span><b>7</b> clips</span>
     <span class="gallery-rule"></span>
     <span>Click a clip · Press play · Remember</span>
   </div>
 
   <div class="video-reel reveal">
-    <!-- Featured player -->
+    <!-- Featured player — holds BOTH a video and an iframe, only one shown at a time -->
     <div class="video-featured">
       <div class="video-frame">
-        <video id="featuredVideo"
-               controls playsinline preload="metadata"
-               poster="images/video01.jpg"
-               src="videos/video01.mp4"></video>
+        <video id="featuredVideo" class="video-player is-hidden"
+               controls playsinline preload="metadata"></video>
+        <iframe id="featuredIframe" class="video-player is-hidden"
+                src=""
+                title="ABM Video"
+                frameborder="0"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
       </div>
       <div class="video-info">
-        <span id="videoCount">01 / 06</span>
+        <span id="videoCount">01 / 07</span>
         <h3 id="videoTitle">Basketball</h3>
         <p id="videoCaption">The night we won in our basketball game.</p>
       </div>
@@ -156,7 +161,9 @@
 
     <!-- Thumbnail rail -->
     <div class="video-thumbs" id="videoThumbs">
-      <button class="video-thumb is-active"
+
+      <!-- 01 · Local -->
+      <button class="video-thumb is-active" data-type="local"
               data-src="videos/video01.mp4" data-poster="images/video01.jpg"
               data-title="Basketball"
               data-caption="The night we won in our basketball game.">
@@ -165,43 +172,50 @@
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <!-- 02 · Local -->
+      <button class="video-thumb" data-type="local"
               data-src="videos/video02.mp4" data-poster="images/video02.jpg"
               data-title="I don't know what this is"
               data-caption="I forget this one 😅.">
-        <img src="images/video02.jpg" alt="Practice Days" loading="lazy">
+        <img src="images/video02.jpg" alt="I don't know what this is" loading="lazy">
         <span class="thumb-badge">02</span>
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <!-- 03 · Local -->
+      <button class="video-thumb" data-type="local"
               data-src="videos/video03.mp4" data-poster="images/video03.jpg"
               data-title="When we get some woods"
               data-caption="The most fun and dangerous moments.">
-        <img src="images/video03.jpg" alt="Lunch Break" loading="lazy">
+        <img src="images/video03.jpg" alt="When we get some woods" loading="lazy">
         <span class="thumb-badge">03</span>
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
-              data-src="videos/video04.mp4" data-poster="images/video04.jpg"
+      <!-- 04 · YouTube (new upload) -->
+      <button class="video-thumb" data-type="youtube"
+              data-id="2bf_ra7FMV4"
               data-title="The SHS Night Dance"
-              data-caption="The night all us had a great time.">
-        <img src="images/video04.jpg" alt="The SHS Night Dance" loading="lazy">
+              data-caption="The night all of us had a great time.">
+        <img src="https://img.youtube.com/vi/2bf_ra7FMV4/maxresdefault.jpg"
+             onerror="this.src='https://img.youtube.com/vi/2bf_ra7FMV4/hqdefault.jpg'"
+             alt="The SHS Night Dance" loading="lazy">
         <span class="thumb-badge">04</span>
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <!-- 05 · Local -->
+      <button class="video-thumb" data-type="local"
               data-src="videos/video05.mp4" data-poster="images/video05.jpg"
               data-title="😂😂😂"
               data-caption="........">
-        <img src="images/video05.jpg" alt="Last Rehearsal" loading="lazy">
+        <img src="images/video05.jpg" alt="Funny clip" loading="lazy">
         <span class="thumb-badge">05</span>
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <!-- 06 · Local -->
+      <button class="video-thumb" data-type="local"
               data-src="videos/video06.mp4" data-poster="images/video06.jpg"
               data-title="Goodbye For Now"
               data-caption="A clip we'll keep for a long time.">
@@ -209,6 +223,19 @@
         <span class="thumb-badge">06</span>
         <span class="thumb-play">▸</span>
       </button>
+
+      <!-- 07 · YouTube (other upload) -->
+      <button class="video-thumb" data-type="youtube"
+              data-id="DTtdAACEaDk"
+              data-title="Class Video"
+              data-caption="Another clip from our ABM journey.">
+        <img src="https://img.youtube.com/vi/DTtdAACEaDk/maxresdefault.jpg"
+             onerror="this.src='https://img.youtube.com/vi/DTtdAACEaDk/hqdefault.jpg'"
+             alt="Class Video" loading="lazy">
+        <span class="thumb-badge">07</span>
+        <span class="thumb-play">▸</span>
+      </button>
+
     </div>
   </div>
 </section>
