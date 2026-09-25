@@ -55,11 +55,11 @@ function setupCursor() {
     requestAnimationFrame(loop);
   })();
   document.addEventListener("mouseover", e => {
-    if (e.target.closest("button,a,.memory-card,.person,.video-thumb"))
+    if (e.target.closest("button,a,.memory-card,.person,.video-thumb,.guess-photo"))
       document.body.classList.add("cursor-hover");
   });
   document.addEventListener("mouseout", e => {
-    if (e.target.closest("button,a,.memory-card,.person,.video-thumb"))
+    if (e.target.closest("button,a,.memory-card,.person,.video-thumb,.guess-photo"))
       document.body.classList.remove("cursor-hover");
   });
 }
@@ -111,11 +111,12 @@ function closeGallery() {
   document.body.style.overflow = "";
 }
 
-/* ---------- video gallery ---------- */
+/* ---------- video gallery (mixed: local MP4 + YouTube) ---------- */
 function setupVideos() {
-  const video = $("#featuredVideo");
+  const video  = $("#featuredVideo");
+  const iframe = $("#featuredIframe");
   const thumbs = [...$$("#videoThumbs .video-thumb")];
-  if (!video || !thumbs.length) return;
+  if (!video || !iframe || !thumbs.length) return;
 
   const countEl = $("#videoCount");
   const titleEl = $("#videoTitle");
@@ -125,36 +126,51 @@ function setupVideos() {
 
   function show(i, autoplay) {
     current = (i + total) % total;
-    const t = thumbs[current];
+    const t    = thumbs[current];
+    const type = t.dataset.type || "local";
 
     try { video.pause(); } catch (_) {}
+    video.classList.add("is-hidden");
+    iframe.classList.add("is-hidden");
+    video.removeAttribute("src");
+    video.removeAttribute("poster");
+    iframe.src = "about:blank";
 
-    video.src = t.dataset.src || "";
-    if (t.dataset.poster) video.poster = t.dataset.poster;
-    video.load();
-
-    if (autoplay) {
-      const p = video.play();
-      if (p && typeof p.catch === "function") p.catch(() => {});
+    if (type === "youtube") {
+      const id = t.dataset.id;
+      if (!id) return;
+      iframe.src = `https://www.youtube.com/embed/${id}?rel=0` +
+                   (autoplay ? "&autoplay=1" : "");
+      iframe.classList.remove("is-hidden");
+    } else {
+      video.src = t.dataset.src || "";
+      if (t.dataset.poster) video.poster = t.dataset.poster;
+      video.load();
+      video.classList.remove("is-hidden");
+      if (autoplay) {
+        const p = video.play();
+        if (p && typeof p.catch === "function") p.catch(() => {});
+      }
     }
 
     countEl.textContent =
       String(current + 1).padStart(2, "0") + " / " + String(total).padStart(2, "0");
     titleEl.textContent = t.dataset.title   || "Class Video";
-    capEl.textContent   = t.dataset.caption || "Another clip from our ABM story.";
+    capEl.textContent   = t.dataset.caption || "A clip from our ABM journey.";
 
     thumbs.forEach((x, idx) => x.classList.toggle("is-active", idx === current));
   }
 
+  show(0, false);
   thumbs.forEach((t, i) => t.addEventListener("click", () => show(i, true)));
 
-  /* ← / → scrub through videos when section is on screen and no modal is open */
   document.addEventListener("keydown", e => {
     if ($("#galleryModal").classList.contains("open")) return;
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
     if (e.target.matches("input, textarea")) return;
 
-    const rect = video.getBoundingClientRect();
+    const activeEl = iframe.classList.contains("is-hidden") ? video : iframe;
+    const rect = activeEl.getBoundingClientRect();
     const onScreen = rect.top < innerHeight * 0.85 && rect.bottom > innerHeight * 0.15;
     if (!onScreen) return;
 
@@ -166,23 +182,23 @@ function setupVideos() {
 /* ---------- guess game ---------- */
 function setupGuess() {
   let revealed = false;
-  const photoBtn = $("#guessPhoto");
-  const actionBtn = $("#revealGuess");
+  const photo   = $("#guessPhoto");
+  const btn     = $("#revealGuess");
 
   function reveal() {
     if (revealed) return;
     revealed = true;
     $(".guess-photo").classList.add("revealed");
     $("#guessAnswer").textContent = "It's Your Ma'am Honey! ✨";
-    actionBtn.textContent = "Revealed ✓";
-    actionBtn.disabled = true;
-    actionBtn.style.opacity = "0.6";
-    actionBtn.style.cursor = "default";
-    if (photoBtn) photoBtn.style.cursor = "default";
+    btn.textContent = "Revealed ✓";
+    btn.disabled = true;
+    btn.style.opacity = "0.6";
+    btn.style.cursor = "default";
+    if (photo) photo.style.cursor = "default";
   }
 
-  actionBtn.addEventListener("click", reveal);
-  if (photoBtn) photoBtn.addEventListener("click", reveal);
+  btn.addEventListener("click", reveal);
+  if (photo) photo.addEventListener("click", reveal);
 }
 
 /* ---------- memory machine ---------- */
