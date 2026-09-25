@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ABM — More Than a Section</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="loader"><div class="loader-mark">ABM</div><p>loading our story...</p></div>
+<div id="cursorDot"></div><div id="cursorRing"></div>
+<div class="grain"></div>
+<div id="progress"><span></span></div>
+
+<header class="nav">
+  <a class="brand" href="#home">ABM<span>•</span></a>
+  <nav>
+    <a href="#memories">Memories</a>
+    <a href="#videos">Videos</a>
+    <a href="#journey">Journey</a>
+    <button id="surpriseNav" class="nav-secret">✦</button>
+  </nav>
+</header>
+
+<main>
+<section class="hero section" id="home">
+  <div class="hero-orbit orbit1"></div><div class="hero-orbit orbit2"></div>
+  <div class="hero-copy reveal">
+    <p class="eyebrow">OUR DIGITAL YEARBOOK</p>
+    <h1>More than<br><em>a section.</em></h1>
+    <p class="hero-sub">A collection of people, moments, inside jokes, and memories that made our ABM journey ours.</p>
+    <a class="scroll-cue" href="#memories"><span>↓</span> Scroll to begin</a>
+  </div>
+  <div class="hero-photo reveal delay1">
+    <div class="photo-frame"><img src="images/class.jpg" alt="ABM class photo" onerror="placeholder(this,'CLASS PHOTO')"></div>
+    <div class="photo-label">THE CLASS · 2025</div>
+  </div>
+</section>
+
+<section class="intro section">
+  <div class="center reveal">
+    <p class="eyebrow">BEFORE WE START</p>
+    <h2>Every photo has<br><em>a little story.</em></h2>
+    <p>Scroll slowly. Click things. You might find something that wasn't supposed to be obvious.</p>
+  </div>
+</section>
+
+<section class="gallery-section section" id="memories">
+  <div class="section-head reveal">
+    <div>
+      <p class="eyebrow">01 / OUR MEMORIES</p>
+      <h2>The moments<br><em>we kept.</em></h2>
+    </div>
+    <p class="section-note">Every photo keeps its original proportions.<br>Click any photo for the full view.</p>
+  </div>
+
+  <div class="gallery-toolbar reveal">
+    <span><b>18</b> memories</span>
+    <span class="gallery-rule"></span>
+    <span>Scroll · Click · Remember</span>
+  </div>
+
+  <div class="masonry" id="memoryGallery">
+    <button class="memory-card reveal" data-index="0" data-title="Class Memory" data-caption="A memory from our ABM journey that we wanted to keep.">
+      <img src="images/memory01.jpg" alt="ABM class memory 01" loading="lazy"><span class="card-overlay"><b>01</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal delay1" data-index="1" data-title="Class Memory" data-caption="One of those moments that felt ordinary back then.">
+      <img src="images/memory02.jpg" alt="ABM class memory 02" loading="lazy"><span class="card-overlay"><b>02</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal delay2" data-index="2" data-title="Class Memory" data-caption="A snapshot of the people who made this section special.">
+      <img src="images/memory03.jpg" alt="ABM class memory 03" loading="lazy"><span class="card-overlay"><b>03</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="3" data-title="Class Memory" data-caption="A little piece of our everyday school life.">
+      <img src="images/memory04.jpg" alt="ABM class memory 04" loading="lazy"><span class="card-overlay"><b>04</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal delay1" data-index="4" data-title="Class Memory" data-caption="A reminder of the days we shared together.">
+      <img src="images/memory05.jpg" alt="ABM class memory 05" loading="lazy"><span class="card-overlay"><b>05</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal delay2" data-index="5" data-title="Class Memory" data-caption="A moment saved here so we never forget it.">
+      <img src="images/memory06.jpg" alt="ABM class memory 06" loading="lazy"><span class="card-overlay"><b>06</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="6" data-title="Class Memory" data-caption="Another memory from our time as ABM.">
+      <img src="images/memory07.jpg" alt="ABM class memory 07" loading="lazy"><span class="card-overlay"><b>07</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="7" data-title="Class Memory" data-caption="A random moment that became part of our story.">
+      <img src="images/memory08.jpg" alt="ABM class memory 08" loading="lazy"><span class="card-overlay"><b>08</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="8" data-title="Class Memory" data-caption="A day that was probably louder than it should have been.">
+      <img src="images/memory09.jpg" alt="ABM class memory 09" loading="lazy"><span class="card-overlay"><b>09</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="9" data-title="Class Memory" data-caption="A behind-the-scenes memory from our section.">
+      <img src="images/memory10.jpg" alt="ABM class memory 10" loading="lazy"><span class="card-overlay"><b>10</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="10" data-title="Class Memory" data-caption="A simple moment that still feels like ours.">
+      <img src="images/memory11.jpg" alt="ABM class memory 11" loading="lazy"><span class="card-overlay"><b>11</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="11" data-title="Class Memory" data-caption="A last-minute memory we somehow managed to keep.">
+      <img src="images/memory12.jpg" alt="ABM class memory 12" loading="lazy"><span class="card-overlay"><b>12</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="12" data-title="Class Memory" data-caption="A small moment worth remembering.">
+      <img src="images/memory13.jpg" alt="ABM class memory 13" loading="lazy"><span class="card-overlay"><b>13</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="13" data-title="Class Memory" data-caption="A memory from somewhere along our ABM journey.">
+      <img src="images/memory14.jpg" alt="ABM class memory 14" loading="lazy"><span class="card-overlay"><b>14</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="14" data-title="Class Memory" data-caption="A moment when things didn't need to be serious.">
+      <img src="images/memory15.jpg" alt="ABM class memory 15" loading="lazy"><span class="card-overlay"><b>15</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="15" data-title="Class Memory" data-caption="A photo taken before we knew it would matter.">
+      <img src="images/memory16.jpg" alt="ABM class memory 16" loading="lazy"><span class="card-overlay"><b>16</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="16" data-title="Class Memory" data-caption="One of the days that brought us closer to the end.">
+      <img src="images/memory17.jpg" alt="ABM class memory 17" loading="lazy"><span class="card-overlay"><b>17</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+    <button class="memory-card reveal" data-index="17" data-title="Class Memory" data-caption="A final memory of our whole section together.">
+      <img src="images/memory18.jpg" alt="ABM class memory 18" loading="lazy"><span class="card-overlay"><b>18</b><strong>Class Memory</strong><small>click to remember</small></span>
+    </button>
+  </div>
+  <div class="secret-hint">There may be a few hidden things around here... <span>✦</span></div>
+</section>
+
+<!-- 02 / OUR VIDEOS -->
+<section class="video-section section" id="videos">
+  <div class="section-head reveal">
+    <div>
+      <p class="eyebrow">02 / OUR VIDEOS</p>
+      <h2>The moments<br><em>that moved.</em></h2>
+    </div>
+    <p class="section-note">Short clips from our performances,<br>practices, and everything in between.</p>
+  </div>
+
+  <div class="gallery-toolbar reveal">
+    <span><b>6</b> clips</span>
+    <span class="gallery-rule"></span>
+    <span>Click a clip · Press play · Remember</span>
+  </div>
+
+  <div class="video-reel reveal">
+    <!-- Featured player -->
+    <div class="video-featured">
+      <div class="video-frame">
+        <video id="featuredVideo"
+               controls playsinline preload="metadata"
+               poster="images/video01.jpg"
+               src="videos/video01.mp4"></video>
+      </div>
+      <div class="video-info">
+        <span id="videoCount">01 / 06</span>
+        <h3 id="videoTitle">Basketball</h3>
+        <p id="videoCaption">The night we won in our basketball game.</p>
+      </div>
+    </div>
+
+    <!-- Thumbnail rail -->
+    <div class="video-thumbs" id="videoThumbs">
+      <button class="video-thumb is-active"
+              data-src="videos/video01.mp4" data-poster="images/video01.jpg"
+              data-title="Basketball"
+              data-caption="The night we won in our basketball game.">
+        <img src="images/video01.jpg" alt="Basketball" loading="lazy">
+        <span class="thumb-badge">01</span>
+        <span class="thumb-play">▸</span>
+      </button>
+
+      <button class="video-thumb"
+              data-src="videos/video02.mp4" data-poster="images/video02.jpg"
+              data-title="I don't know what this is"
+              data-caption="I forget this one 😅.">
+        <img src="images/video02.jpg" alt="Practice Days" loading="lazy">
+        <span class="thumb-badge">02</span>
+        <span class="thumb-play">▸</span>
+      </button>
+
+      <button class="video-thumb"
+              data-src="videos/video03.mp4" data-poster="images/video03.jpg"
+              data-title="When we get some woods"
+              data-caption="The most fun and dangerous moments.">
+        <img src="images/video03.jpg" alt="Lunch Break" loading="lazy">
+        <span class="thumb-badge">03</span>
+        <span class="thumb-play">▸</span>
+      </button>
+
+      <button class="video-thumb"
+              data-src="videos/video04.mp4" data-poster="images/video04.jpg"
+              data-title="The SHS Night Dance"
+              data-caption="The night all us had a great time.">
+        <img src="images/video04.jpg" alt="The SHS Night Dance" loading="lazy">
+        <span class="thumb-badge">04</span>
+        <span class="thumb-play">▸</span>
+      </button>
+
+      <button class="video-thumb"
+              data-src="videos/video05.mp4" data-poster="images/video05.jpg"
+              data-title="😂😂😂"
+              data-caption="........">
+        <img src="images/video05.jpg" alt="Last Rehearsal" loading="lazy">
+        <span class="thumb-badge">05</span>
+        <span class="thumb-play">▸</span>
+      </button>
+
+      <button class="video-thumb"
+              data-src="videos/video06.mp4" data-poster="images/video06.jpg"
+              data-title="Goodbye For Now"
+              data-caption="A clip we'll keep for a long time.">
+        <img src="images/video06.jpg" alt="Goodbye For Now" loading="lazy">
+        <span class="thumb-badge">06</span>
+        <span class="thumb-play">▸</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="day section">
+  <div class="section-head reveal"><div><p class="eyebrow">03 / A DAY WITH ABM</p><h2>Just another<br><em>normal day.</em></h2></div></div>
+  <div class="day-list">
+    <article class="day-row reveal"><time>07:30</time><div><h3>The early ones.</h3><p>"Everyone is ready."</p></div><span>01</span></article>
+    <article class="day-row reveal"><time>08:15</time><div><h3>Okay... maybe not everyone.</h3><p>"Somehow, we made it."</p></div><span>02</span></article>
+    <article class="day-row reveal"><time>12:00</time><div><h3>The most important subject.</h3><p>"Lunch."</p></div><span>03</span></article>
+    <article class="day-row reveal"><time>15:30</time><div><h3>Another day survived.</h3><p>"See you tomorrow."</p></div><span>04</span></article>
+  </div>
+</section>
+
+<section class="journey section" id="journey">
+  <div class="center reveal"><p class="eyebrow">04 / OUR JOURNEY</p><h2>Then, now,<br><em>and everything between.</em></h2></div>
+  <div class="timeline">
+    <div class="timeline-item reveal"><span>2023</span><div><b>The Beginning</b><p>First introductions. New classmates. A new chapter.</p></div></div>
+    <div class="timeline-item reveal"><span>2024</span><div><b>The Start</b><p>Building on our foundation. Learning and growing together.</p></div></div>
+    <div class="timeline-item reveal"><span>2025</span><div><b>Growing Together</b><p>More activities, more memories, and a lot more inside jokes.</p></div></div>
+    <div class="timeline-item reveal"><span>2025</span><div><b>Our Final Chapter</b><p>The year we realized the ordinary days were never really ordinary.</p></div></div>
+  </div>
+</section>
+
+<section class="guess section">
+  <div class="guess-box reveal">
+    <p class="eyebrow">A LITTLE GAME</p>
+    <h2>Guess who? 👀</h2>
+    <p id="guessPrompt">Someone from the section is hiding behind the blur.</p>
+
+    <div class="guess-photo" id="guessPhoto">
+      <img src="images/guess.jpg" alt="Guess who" onerror="placeholder(this,'GUESS WHO')">
+      <div id="blurCover"></div>
+    </div>
+
+    <button class="action-btn" id="revealGuess">Reveal answer</button>
+    <p id="guessAnswer" class="guess-answer"></p>
+  </div>
+</section>
+
+<section class="random section">
+  <div class="random-card reveal">
+    <p class="eyebrow">MEMORY MACHINE</p>
+    <h2>Give me a<br><em>random memory.</em></h2>
+    <div id="randomResult"><span>✦</span><p>Press the button. Let's see what comes up.</p></div>
+    <button class="action-btn" id="randomBtn">Surprise me ✨</button>
+  </div>
+</section>
+
+<section class="final section" id="final">
+  <div id="finalParticles"></div>
+  <div class="final-copy reveal">
+    <p class="eyebrow">ONE LAST THING</p>
+    <h2>Wait...</h2>
+    <p class="final-small">There's one more thing.</p>
+    <button class="action-btn" id="finalReveal">Open the last page</button>
+  </div>
+  <div id="finalMessage">
+    <p class="eyebrow">ABM</p>
+    <h2>We weren't just<br><em>classmates.</em></h2>
+    <p>We became part of each other's story.</p>
+    <div class="final-line"></div>
+    <strong>Thank you for the memories. ❤️</strong>
+    <small>Keep this little corner of the internet as a reminder of our time together.</small>
+  </div>
+</section>
+</main>
+
+<div class="modal" id="galleryModal">
+  <button class="modal-close">×</button>
+  <button class="modal-arrow prev">‹</button>
+  <div class="modal-inner"><img id="modalImage" src="" alt=""><div><span id="modalCount"></span><h2 id="modalTitle"></h2><p id="modalCaption"></p></div></div>
+  <button class="modal-arrow next">›</button>
+</div>
+
+<div class="toast" id="toast"></div>
+<footer>ABM · OUR STORY · <span id="year"></span></footer>
+<script src="script.js"></script>
+</body>
+</html>
