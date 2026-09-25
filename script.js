@@ -139,7 +139,10 @@ function setupVideos() {
     if (type === "youtube") {
       const id = t.dataset.id;
       if (!id) return;
-      iframe.src = `https://www.youtube.com/embed/${id}?rel=0` +
+      /* privacy-friendly + ad-blocker-friendly host */
+      const origin = encodeURIComponent(location.origin || location.href);
+      iframe.src = `https://www.youtube-nocookie.com/embed/${id}` +
+                   `?rel=0&playsinline=1&modestbranding=1&origin=${origin}` +
                    (autoplay ? "&autoplay=1" : "");
       iframe.classList.remove("is-hidden");
     } else {
