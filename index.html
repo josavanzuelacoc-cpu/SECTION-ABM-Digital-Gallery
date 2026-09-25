@@ -139,13 +139,19 @@
   </div>
 
   <div class="video-reel reveal">
-    <!-- Featured player -->
+    <!-- Featured player — holds a <video> AND an <iframe>, only one visible at a time -->
     <div class="video-featured">
       <div class="video-frame">
         <video id="featuredVideo"
-               controls playsinline preload="metadata"
-               poster="images/video01.jpg"
-               src="videos/video01.mp4"></video>
+               class="video-player is-hidden"
+               controls playsinline preload="metadata"></video>
+        <iframe id="featuredIframe"
+                class="video-player is-hidden"
+                src=""
+                title="ABM Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
       </div>
       <div class="video-info">
         <span id="videoCount">01 / 06</span>
@@ -156,7 +162,7 @@
 
     <!-- Thumbnail rail -->
     <div class="video-thumbs" id="videoThumbs">
-      <button class="video-thumb is-active"
+      <button class="video-thumb is-active" data-type="local"
               data-src="videos/video01.mp4" data-poster="images/video01.jpg"
               data-title="Basketball"
               data-caption="The night we won in our basketball game.">
@@ -165,7 +171,7 @@
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <button class="video-thumb" data-type="local"
               data-src="videos/video02.mp4" data-poster="images/video02.jpg"
               data-title="I don't know what this is"
               data-caption="I forget this one 😅.">
@@ -174,7 +180,7 @@
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <button class="video-thumb" data-type="local"
               data-src="videos/video03.mp4" data-poster="images/video03.jpg"
               data-title="When we get some woods"
               data-caption="The most fun and dangerous moments.">
@@ -183,16 +189,19 @@
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
-              data-src="videos/video04.mp4" data-poster="images/video04.jpg"
+      <!-- 04 · YouTube -->
+      <button class="video-thumb" data-type="youtube"
+              data-id="2bf_ra7FMV4"
               data-title="The SHS Night Dance"
               data-caption="The night all of us had a great time.">
-        <img src="images/video04.jpg" alt="The SHS Night Dance" loading="lazy">
+        <img src="https://img.youtube.com/vi/2bf_ra7FMV4/hqdefault.jpg"
+             onerror="this.src='https://img.youtube.com/vi/2bf_ra7FMV4/mqdefault.jpg'"
+             alt="The SHS Night Dance" loading="lazy">
         <span class="thumb-badge">04</span>
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <button class="video-thumb" data-type="local"
               data-src="videos/video05.mp4" data-poster="images/video05.jpg"
               data-title="😂😂😂"
               data-caption="........">
@@ -201,7 +210,7 @@
         <span class="thumb-play">▸</span>
       </button>
 
-      <button class="video-thumb"
+      <button class="video-thumb" data-type="local"
               data-src="videos/video06.mp4" data-poster="images/video06.jpg"
               data-title="Goodbye For Now"
               data-caption="A clip we'll keep for a long time.">
